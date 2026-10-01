@@ -11,17 +11,17 @@ html,body{width:1920px;height:1080px;overflow:hidden;background:#F6D50C;font-fam
 #intro,#hero,#fin{width:1920px;height:1080px}
 .c{text-align:center;width:1920px;left:0}
 .w{color:#fff}
-#chat{left:100px;top:100px;width:720px;height:880px;border-radius:34px;background:#f6f5fd;overflow:hidden;box-shadow:0 40px 90px rgba(10,0,60,.45)}
-#chead{position:absolute;left:0;top:0;width:720px;height:250px;background:linear-gradient(135deg,#4a2af0,#9b22d4)}
+#chat{left:70px;top:70px;width:800px;height:940px;border-radius:36px;background:#f6f5fd;overflow:hidden;box-shadow:0 40px 90px rgba(10,0,60,.45)}
+#chead{position:absolute;left:0;top:0;width:800px;height:220px;background:linear-gradient(135deg,#4a2af0,#9b22d4)}
 #chead .nm{position:absolute;left:32px;top:26px;color:#fff;font-size:28px;font-weight:700}
-#chead .ic{position:absolute;left:316px;top:62px;width:88px;height:88px}
-#chead .q{position:absolute;left:0;width:720px;top:168px;text-align:center;color:#fff;font-size:46px;font-weight:700}
-.grp{position:absolute;left:28px;right:28px;top:276px;display:flex;flex-direction:column;gap:24px}
-.ub{align-self:flex-end;max-width:88%;background:#e6e1ff;color:#2a1a6e;border-radius:28px 28px 6px 28px;padding:20px 28px;font-size:34px;line-height:1.3}
+#chead .ic{position:absolute;left:350px;top:40px;width:100px;height:100px}
+#chead .q{position:absolute;left:0;width:800px;top:148px;text-align:center;color:#fff;font-size:46px;font-weight:700}
+.grp{position:absolute;left:32px;right:32px;top:252px;display:flex;flex-direction:column;gap:24px}
+.ub{align-self:flex-end;max-width:86%;background:linear-gradient(135deg,#5b3df5,#8a2fe0);color:#fff;border-radius:28px 28px 6px 28px;padding:20px 28px;font-size:34px;line-height:1.3}
 .rb{align-self:flex-start;max-width:90%;background:#fff;color:#241b52;border:2px solid #e1dbf7;box-shadow:0 8px 24px rgba(70,40,180,.12);border-radius:28px 28px 28px 6px;padding:20px 28px;font-size:34px;line-height:1.3}
 .dots{align-self:flex-start;background:#fff;border:2px solid #e1dbf7;border-radius:28px;padding:22px 28px;display:flex;gap:10px}
 .dots i{width:14px;height:14px;border-radius:50%;background:#7b4cf0;display:block}
-#inp{position:absolute;left:28px;right:28px;bottom:28px;height:84px;border:3px solid #5b3df5;border-radius:20px;background:#fff;font-size:30px;padding:0 28px;line-height:78px;color:#241b52;white-space:nowrap;overflow:hidden}
+#inp{position:absolute;left:32px;right:32px;bottom:32px;height:140px;border:3px solid #5b3df5;border-radius:24px;background:#fff;font-size:33px;padding:0 28px;line-height:44px;color:#241b52;white-space:normal;overflow:hidden;display:flex;align-items:center}
 #inp .ph{color:#9a98b4}
 .ttl{left:930px;top:104px;width:900px}
 .ttl .l{color:#F6D50C;font-size:28px;font-weight:700;letter-spacing:5px}
@@ -114,7 +114,7 @@ html,body{width:1920px;height:1080px;overflow:hidden;background:#F6D50C;font-fam
   <div id="chips"></div>
 </div>
 
-<div id="foot" class="abs c" style="top:1010px;font-size:22px;color:rgba(255,255,255,.65);letter-spacing:3px">HEFAME  ·  SAP SUCCESSFACTORS  ·  JOULE</div>
+<div id="foot" class="abs c" style="top:1036px;font-size:22px;color:rgba(255,255,255,.65);letter-spacing:3px">HEFAME  ·  SAP SUCCESSFACTORS  ·  JOULE</div>
 
 <div id="bgY2" class="abs"></div>
 <div id="fin" class="abs">
@@ -245,7 +245,7 @@ function seek(t){
     const n=(r-3.3)*40;
     c.rb.innerHTML=split(c.r,n);c.rb.style.opacity=r>=3.3?1:0;
   });
-  $('inp').innerHTML=inp;
+  $('inp').innerHTML='<div style="width:100%">'+inp+'</div>';
 
   // titles
   const T=[7,12,17];
