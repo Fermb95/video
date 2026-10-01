@@ -32,15 +32,15 @@ html,body{width:1920px;height:1080px;overflow:hidden;background:#F6D50C;font-fam
 .pbar{position:absolute;left:0;top:0;width:880px;height:64px;background:#fff;border-bottom:2px solid #e6e8f0}
 .pbar b{position:absolute;left:30px;top:18px;font-size:26px;color:#0a3d91}
 .pbar span{position:absolute;left:300px;top:14px;width:380px;height:36px;border-radius:18px;background:#eef0f6;color:#8a90a6;font-size:20px;line-height:36px;padding-left:18px}
-.tile{position:absolute;width:190px;height:190px;border-radius:24px;color:#fff;font-weight:700;font-size:24px;text-align:center;padding:0 10px}
-.tile svg{display:block;margin:34px auto 14px;width:58px;height:58px;fill:none;stroke:#fff;stroke-width:3.4;stroke-linecap:round;stroke-linejoin:round}
+.tile{position:absolute;width:190px;height:190px;border-radius:24px;color:#1c1a1a;font-weight:700;font-size:24px;text-align:center;padding:0 10px}
+.tile svg{display:block;margin:34px auto 14px;width:58px;height:58px;fill:none;stroke:#1c1a1a;stroke-width:3.4;stroke-linecap:round;stroke-linejoin:round}
 .pill{position:absolute;border-radius:40px;font-weight:700;white-space:nowrap}
 .search{position:absolute;left:0;top:0;width:880px;height:88px;border-radius:44px;background:#fff;box-shadow:0 14px 40px rgba(10,0,60,.3);font-size:36px;color:#241b52;line-height:88px;padding-left:96px}
 .res{position:absolute;left:0;top:124px;width:880px;height:456px;border-radius:38px;background:#fff;box-shadow:0 30px 70px rgba(10,0,60,.4)}
 .node{position:absolute;height:76px;border-radius:20px;background:rgba(255,255,255,.95);color:#2a1a6e;font-size:27px;font-weight:700;text-align:center;line-height:76px;box-shadow:0 12px 30px rgba(10,0,60,.3)}
 .chip{position:absolute;width:520px;height:140px;border-radius:32px;background:rgba(255,255,255,.96);box-shadow:0 20px 50px rgba(10,0,60,.35)}
 .chip .b{position:absolute;left:28px;top:28px;width:84px;height:84px;border-radius:24px}
-.chip .b svg{width:48px;height:48px;margin:18px;fill:none;stroke:#fff;stroke-width:3.4;stroke-linecap:round;stroke-linejoin:round}
+.chip .b svg{width:48px;height:48px;margin:18px;fill:none;stroke:#1c1a1a;stroke-width:3.4;stroke-linecap:round;stroke-linejoin:round}
 .chip .t{position:absolute;left:134px;top:0;height:140px;line-height:140px;font-size:34px;font-weight:700;color:#241b52}
 </style></head><body><div id="stage">
 <svg width="0" height="0" style="position:absolute"><defs><path id="spk" d="M0 -1 C .12 -.35 .35 -.12 1 0 C .35 .12 .12 .35 0 1 C -.12 .35 -.35 .12 -1 0 C -.35 -.12 -.12 -.35 0 -1Z"/></defs></svg>
@@ -76,7 +76,7 @@ html,body{width:1920px;height:1080px;overflow:hidden;background:#F6D50C;font-fam
   <div class="pbar"><b>Inicio ▾</b><span>Buscar acciones…</span></div>
   <div id="tiles"></div>
   <div id="navpill" class="pill" style="left:30px;top:508px;background:#5b3df5;color:#fff;font-size:24px;padding:14px 28px">→ Abriendo «Mi aprendizaje»…</div>
-  <div id="ripple" class="abs" style="width:60px;height:60px;border-radius:50%;border:5px solid #fff"></div>
+  <div id="ripple" class="abs" style="width:60px;height:60px;border-radius:50%;border:5px solid #1c1a1a"></div>
   <svg id="cursor" class="abs" width="48" height="48" viewBox="0 0 34 44"><path d="M3 2 L3 34 L11 27 L17 40 L23 37 L17 25 L28 25 Z" fill="#fff" stroke="#1d1a45" stroke-width="2.5" stroke-linejoin="round"/></svg>
 </div>
 
@@ -176,14 +176,14 @@ const IC={
  target:'<circle cx="24" cy="24" r="18"/><circle cx="24" cy="24" r="10"/><circle cx="24" cy="24" r="2.5"/>'
 };
 const ico=n=>`<svg viewBox="0 0 48 48">${IC[n]}</svg>`;
-const TILES=[['Mi aprendizaje','book','#0b57d0'],['Mi equipo','team','#e0147a'],['Mis datos','edit','#0c9a8b'],['Fichar','clock','#7b5cf5'],
- ['Prevención','shield','#5b6d84'],['Dar feedback','chat','#1b64e0'],['Organigrama','org','#e0147a'],['Mis objetivos','target','#0c9a8b']];
+const TILES=[['Mi aprendizaje','book','#F6D50C'],['Mi equipo','team','#F6D50C'],['Mis datos','edit','#F6D50C'],['Fichar','clock','#F6D50C'],
+ ['Prevención','shield','#F6D50C'],['Dar feedback','chat','#F6D50C'],['Organigrama','org','#F6D50C'],['Mis objetivos','target','#F6D50C']];
 const tiles=[];
 TILES.forEach((d,i)=>{const e=document.createElement('div');e.className='tile';e.style.background=d[2];
  e.style.left=(30+(i%4)*210)+'px';e.style.top=(94+Math.floor(i/4)*210)+'px';e.innerHTML=ico(d[1])+d[0];$('tiles').appendChild(e);tiles.push(e)});
 
-const CH=[['Actualizar mis datos','edit','#0c9a8b'],['Prevención','shield','#5b6d84'],['Dar feedback','chat','#1b64e0'],
- ['Consultar mi puesto','org','#e0147a'],['Mis objetivos','target','#7b5cf5'],['Mi formación','book','#0b57d0']];
+const CH=[['Actualizar mis datos','edit','#F6D50C'],['Prevención','shield','#F6D50C'],['Dar feedback','chat','#F6D50C'],
+ ['Consultar mi puesto','org','#F6D50C'],['Mis objetivos','target','#F6D50C'],['Mi formación','book','#F6D50C']];
 const chips=[];
 CH.forEach((d,i)=>{const e=document.createElement('div');e.className='chip';e.style.left=(150+(i%3)*550)+'px';e.style.top=(390+Math.floor(i/3)*170)+'px';
  e.innerHTML=`<div class="b" style="background:${d[2]}">${ico(d[1])}</div><div class="t">${d[0]}</div>`;$('chips').appendChild(e);chips.push(e)});
@@ -263,7 +263,7 @@ function seek(t){
   $('cursor').style.left='0';$('cursor').style.top='0';
   tiles.forEach((e,i)=>{
     if(i===0){const press=r>3.65&&r<3.85?.94:1;const big=1+.08*eo(P(r,3.85,.5));
-      e.style.transform=`scale(${press*big})`;e.style.boxShadow=`0 0 0 ${8*Math.sin(P(r,3.0,1)*Math.PI)+(r>3.85?8:0)}px rgba(255,255,255,.9),0 20px 50px rgba(0,0,0,.35)`;e.style.opacity=1;e.style.zIndex=2}
+      e.style.transform=`scale(${press*big})`;e.style.boxShadow=`0 0 0 ${8*Math.sin(P(r,3.0,1)*Math.PI)+(r>3.85?8:0)}px rgba(28,26,26,.9),0 20px 50px rgba(0,0,0,.35)`;e.style.opacity=1;e.style.zIndex=2}
     else{e.style.transform='scale(1)';e.style.boxShadow='none';e.style.opacity=1-.62*eo(P(r,3.85,.5))}
   });
   const rp=P(r,3.7,.7);
