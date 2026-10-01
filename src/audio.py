@@ -1,7 +1,13 @@
 import numpy as np, wave
-K=1.7
-SR=44100; D=30*K
-T=lambda x:x*K
+import json,subprocess
+TM=json.load(open('/home/user/video/src/timemap.json'))
+B,KK=TM['bounds'],TM['K']
+starts=[0]
+for i,k in enumerate(KK): starts.append(starts[-1]+k*(B[i+1]-B[i]))
+def T(x):
+    for i in range(len(KK)):
+        if x<=B[i+1] or i==len(KK)-1: return starts[i]+(x-B[i])*KK[i]
+SR=44100; D=starts[-1]
 N=int(SR*D); t=np.arange(N)/SR
 rng=np.random.default_rng(3)
 mus=np.zeros(N); sfx=np.zeros(N)
@@ -61,8 +67,21 @@ for i in range(8): add(sfx,T(12+3.7+i*.15),pop(900+i*40)[:int(.06*SR)],.18)
 for i in range(6): add(sfx,T(22.7+i*.18),tone(hz(72+[0,4,7,12,7,4][i]),.6,.003,6,(1,.3)),.1)
 add(sfx,T(26.7),tone(hz(96),1.5,.005,2.5,(1,.4,.3)),.15)
 add(sfx,T(28.5),pop(900),.3)
-out=mus*.55+sfx*.8
-out=np.tanh(out*1.1); out/=np.abs(out).max()/.85
+import os
+def load(f):
+    r=subprocess.run(['ffmpeg','-v','error','-i',f,'-ac','1','-ar',str(SR),'-f','f32le','-'],capture_output=True,check=True)
+    x=np.frombuffer(r.stdout,dtype=np.float32).astype(np.float64)
+    return x/np.abs(x).max()*.9
+V='/home/user/video/src/voice/'
+vo=np.zeros(N)
+for f,st in (('presentacion',starts[1]+1.0),('guia',starts[2]+.5),('codigos',starts[3]+.5),('organigrama',starts[4]+.5),('mucho_mas',starts[5]+.6),('cierre',starts[6]+2.6)):
+    if os.path.exists(V+f+'.mp3'):
+        x=load(V+f+'.mp3'); print(f,round(st,2),'->',round(st+len(x)/SR,2)); add(vo,st,x,1.0)
+env=np.convolve(np.abs(vo),np.ones(int(.15*SR))/int(.15*SR),'same')
+env=np.convolve(np.minimum(env*8,1),np.ones(int(.4*SR))/int(.4*SR),'same')
+duck=1-.6*np.minimum(env,1)
+out=mus*.55*duck+sfx*.6*(1-.3*np.minimum(env,1))+vo*1.0
+out=np.tanh(out*1.05); out/=np.abs(out).max()/.9
 st=np.stack([out,np.roll(out,int(.004*SR))],1)
 w=wave.open('/home/user/video/src/audio.wav','wb');w.setnchannels(2);w.setsampwidth(2);w.setframerate(SR)
 w.writeframes((st*32767).astype('<i2').tobytes());w.close()
