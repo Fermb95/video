@@ -1,0 +1,68 @@
+import numpy as np, wave
+SR=44100; D=30
+N=SR*D; t=np.arange(N)/SR
+rng=np.random.default_rng(3)
+mus=np.zeros(N); sfx=np.zeros(N)
+def add(buf,start,sig,g=1.0):
+    i=int(start*SR); n=min(len(sig),N-i)
+    if n>0: buf[i:i+n]+=sig[:n]*g
+def tone(f,dur,att=.01,dec=3.0,harm=(1,.35,.15)):
+    x=np.arange(int(dur*SR))/SR
+    env=np.minimum(x/att,1)*np.exp(-dec*x)
+    return sum(a*np.sin(2*np.pi*f*(k+1)*x) for k,a in enumerate(harm))*env
+def pad(f,dur,g=1.0):
+    x=np.arange(int(dur*SR))/SR
+    env=np.minimum(x/.8,1)*np.minimum((dur-x)/.8,1)
+    s=sum(np.sin(2*np.pi*f*d*x+ph) for d,ph in ((1,0),(1.004,1),(0.996,2)))/3
+    s+=.3*np.sin(2*np.pi*f*2*x)
+    return s*env*g
+hz=lambda m:440*2**((m-69)/12)
+# progression C G Am F, 2.5 s/bar (96 bpm)
+bar=2.5; chords=[[48,52,55,60],[43,50,55,59],[45,52,57,60],[41,48,53,57]]
+for b in range(12):
+    c=chords[b%4]
+    for m in c: add(mus,b*bar,pad(hz(m),bar+.6),.11)
+    add(mus,b*bar,tone(hz(c[0]-12),bar,.02,1.1,(1,.4)),.35)
+    beat=bar/8
+    if b>=1:
+        arp=[c[1]+12,c[2]+12,c[3]+12,c[2]+12+0,c[3]+12,c[2]+12,c[1]+12+12,c[2]+12]
+        for k,m in enumerate(arp):
+            if b>=9 and False: pass
+            add(mus,b*bar+k*beat,tone(hz(m),.7,.004,6,(1,.3,.1)),.13 if k%2==0 else .09)
+    # soft pulse
+    for k in range(5):
+        x=np.arange(int(.18*SR))/SR
+        add(mus,b*bar+k*bar/5*0+k*.5,np.sin(2*np.pi*(90*np.exp(-x*18))*x*0+2*np.pi*60*x)*np.exp(-x*22),.0)
+mus*= np.minimum(t/1.5,1)*np.clip((D-t)/1.2,0,1)
+# final resolving chord
+for m in (60,64,67,72): add(mus,26.6,tone(hz(m),3.4,.02,.9,(1,.3,.1)),.12)
+def whoosh(dur,up=True,g=.5):
+    x=np.arange(int(dur*SR))/SR; n=rng.standard_normal(len(x))
+    k=np.cumsum(n); # brownian-ish
+    f=np.exp(-((x-dur*.5)/(dur*.28))**2)
+    s=np.convolve(n,np.ones(24)/24,'same')*f
+    return s*(1 if up else 1)
+def click(g=1):
+    x=np.arange(int(.05*SR))/SR; return rng.standard_normal(len(x))*np.exp(-x*140)*.5
+def pop(f=700):
+    x=np.arange(int(.18*SR))/SR; return np.sin(2*np.pi*(f+400*np.exp(-x*30))*x)*np.exp(-x*22)
+def ding(f=1318):
+    return tone(f,.9,.002,5,(1,.4,.2))
+add(sfx,2.2,whoosh(1.4),.9)
+add(sfx,25.5,whoosh(1.4),.9)
+add(sfx,3.2,tone(hz(84),1.6,.01,2.5,(1,.4,.3)),.18); add(sfx,3.35,tone(hz(91),1.4,.01,2.5,(1,.4,.3)),.14)
+for s,L in ((7,59),(12,45),(17,24)):
+    for k in range(L): add(sfx,s+.6+k*1.6/L,click(),.28)
+    add(sfx,s+2.3,pop(),.5)
+    add(sfx,s+3.3,ding(),.22)
+add(sfx,10.65,click(),1.2); add(sfx,10.65,pop(500),.3)
+add(sfx,12+3.3,ding(1568),.0)
+for i in range(8): add(sfx,12+3.7+i*.15,pop(900+i*40)[:int(.06*SR)],.18)
+for i in range(6): add(sfx,22.7+i*.18,tone(hz(72+[0,4,7,12,7,4][i]),.6,.003,6,(1,.3)),.1)
+add(sfx,26.7,tone(hz(96),1.5,.005,2.5,(1,.4,.3)),.15)
+add(sfx,28.5,pop(900),.3)
+out=mus*.55+sfx*.8
+out=np.tanh(out*1.1); out/=np.abs(out).max()/.85
+st=np.stack([out,np.roll(out,int(.004*SR))],1)
+w=wave.open('/home/user/video/src/audio.wav','wb');w.setnchannels(2);w.setsampwidth(2);w.setframerate(SR)
+w.writeframes((st*32767).astype('<i2').tobytes());w.close()
