@@ -1,0 +1,324 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><title>Hefame × Joule</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1920px;height:1080px;overflow:hidden;background:#F6D50C;font-family:"Liberation Sans",Arial,Helvetica,sans-serif}
+#stage{position:relative;width:1920px;height:1080px;overflow:hidden}
+.abs{position:absolute;left:0;top:0}
+#bgY,#bgY2{width:1920px;height:1080px;background:#F6D50C}
+#bgP{width:1920px;height:1080px;background:linear-gradient(135deg,#3f23e8 0%,#6a2cf0 45%,#a41ccb 100%);overflow:hidden}
+.blob{position:absolute;border-radius:50%;filter:blur(10px)}
+#intro,#hero,#fin{width:1920px;height:1080px}
+.c{text-align:center;width:1920px;left:0}
+.w{color:#fff}
+#chat{left:100px;top:100px;width:720px;height:880px;border-radius:34px;background:#f6f5fd;overflow:hidden;box-shadow:0 40px 90px rgba(10,0,60,.45)}
+#chead{position:absolute;left:0;top:0;width:720px;height:250px;background:linear-gradient(135deg,#4a2af0,#9b22d4)}
+#chead .nm{position:absolute;left:32px;top:26px;color:#fff;font-size:28px;font-weight:700}
+#chead .ic{position:absolute;left:316px;top:62px;width:88px;height:88px}
+#chead .q{position:absolute;left:0;width:720px;top:168px;text-align:center;color:#fff;font-size:46px;font-weight:700}
+.grp{position:absolute;left:28px;right:28px;top:276px;display:flex;flex-direction:column;gap:24px}
+.ub{align-self:flex-end;max-width:84%;background:#e6e1ff;color:#2a1a6e;border-radius:28px 28px 6px 28px;padding:20px 28px;font-size:31px;line-height:1.3}
+.rb{align-self:flex-start;max-width:90%;background:#fff;color:#241b52;border:2px solid #e1dbf7;box-shadow:0 8px 24px rgba(70,40,180,.12);border-radius:28px 28px 28px 6px;padding:20px 28px;font-size:31px;line-height:1.3}
+.dots{align-self:flex-start;background:#fff;border:2px solid #e1dbf7;border-radius:28px;padding:22px 28px;display:flex;gap:10px}
+.dots i{width:14px;height:14px;border-radius:50%;background:#7b4cf0;display:block}
+#inp{position:absolute;left:28px;right:28px;bottom:28px;height:84px;border:3px solid #5b3df5;border-radius:20px;background:#fff;font-size:29px;padding:0 28px;line-height:78px;color:#241b52;white-space:nowrap;overflow:hidden}
+#inp .ph{color:#9a98b4}
+.ttl{left:930px;top:104px;width:900px}
+.ttl .l{color:#F6D50C;font-size:28px;font-weight:700;letter-spacing:5px}
+.ttl .h{color:#fff;font-size:70px;font-weight:700;line-height:1.1;margin-top:12px}
+.ttl .s{color:rgba(255,255,255,.82);font-size:33px;margin-top:14px}
+.card{left:930px;top:380px;width:880px;height:580px}
+.portal{background:#f3f4f9;border-radius:30px;overflow:hidden;box-shadow:0 30px 70px rgba(10,0,60,.4)}
+.pbar{position:absolute;left:0;top:0;width:880px;height:64px;background:#fff;border-bottom:2px solid #e6e8f0}
+.pbar b{position:absolute;left:30px;top:18px;font-size:26px;color:#0a3d91}
+.pbar span{position:absolute;left:300px;top:14px;width:380px;height:36px;border-radius:18px;background:#eef0f6;color:#8a90a6;font-size:20px;line-height:36px;padding-left:18px}
+.tile{position:absolute;width:190px;height:190px;border-radius:24px;color:#fff;font-weight:700;font-size:21px;text-align:center;padding:0 12px}
+.tile svg{display:block;margin:34px auto 14px;width:58px;height:58px;fill:none;stroke:#fff;stroke-width:3.4;stroke-linecap:round;stroke-linejoin:round}
+.pill{position:absolute;border-radius:40px;font-weight:700;white-space:nowrap}
+.search{position:absolute;left:0;top:0;width:880px;height:88px;border-radius:44px;background:#fff;box-shadow:0 14px 40px rgba(10,0,60,.3);font-size:36px;color:#241b52;line-height:88px;padding-left:96px}
+.res{position:absolute;left:0;top:124px;width:880px;height:456px;border-radius:38px;background:#fff;box-shadow:0 30px 70px rgba(10,0,60,.4)}
+.node{position:absolute;height:76px;border-radius:20px;background:rgba(255,255,255,.95);color:#2a1a6e;font-size:25px;font-weight:700;text-align:center;line-height:76px;box-shadow:0 12px 30px rgba(10,0,60,.3)}
+.chip{position:absolute;width:520px;height:140px;border-radius:32px;background:rgba(255,255,255,.96);box-shadow:0 20px 50px rgba(10,0,60,.35)}
+.chip .b{position:absolute;left:28px;top:28px;width:84px;height:84px;border-radius:24px}
+.chip .b svg{width:48px;height:48px;margin:18px;fill:none;stroke:#fff;stroke-width:3.4;stroke-linecap:round;stroke-linejoin:round}
+.chip .t{position:absolute;left:134px;top:0;height:140px;line-height:140px;font-size:34px;font-weight:700;color:#241b52}
+</style></head><body><div id="stage">
+<svg width="0" height="0" style="position:absolute"><defs><path id="spk" d="M0 -1 C .12 -.35 .35 -.12 1 0 C .35 .12 .12 .35 0 1 C -.12 .35 -.35 .12 -1 0 C -.35 -.12 -.12 -.35 0 -1Z"/></defs></svg>
+
+<div id="bgY" class="abs"></div>
+<div id="intro" class="abs"><div id="hlogo" class="abs"></div></div>
+
+<div id="bgP" class="abs">
+  <div class="blob" id="b1" style="width:900px;height:900px;background:radial-gradient(circle,rgba(255,80,200,.55),transparent 65%)"></div>
+  <div class="blob" id="b2" style="width:1100px;height:1100px;background:radial-gradient(circle,rgba(70,140,255,.5),transparent 65%)"></div>
+  <div class="blob" id="b3" style="width:700px;height:700px;background:radial-gradient(circle,rgba(190,90,255,.5),transparent 65%)"></div>
+</div>
+
+<div id="hero" class="abs">
+  <div id="glow" class="abs" style="left:710px;top:130px;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.35),transparent 65%)"></div>
+  <div id="heroIcon" class="abs" style="left:790px;top:210px;width:340px;height:340px"></div>
+  <div id="h1" class="abs c w" style="top:590px;font-size:34px;font-weight:700;letter-spacing:8px;color:#F6D50C">NOVEDAD EN HEFAME</div>
+  <div id="h2" class="abs c w" style="top:640px;font-size:160px;font-weight:700;letter-spacing:-3px">Joule</div>
+  <div id="h3" class="abs c w" style="top:830px;font-size:44px;opacity:.9">El asistente de IA de SAP, ya en nuestro SuccessFactors</div>
+</div>
+
+<div id="chat" class="abs">
+  <div id="chead"><div class="nm">Joule</div><div class="ic" id="chIcon"></div><div class="q">¿Cómo puedo guiarte?</div></div>
+  <div id="grps"></div>
+  <div id="inp"></div>
+</div>
+
+<div id="t0" class="abs ttl"><div class="l">01 · NAVEGACIÓN</div><div class="h">Te guía por el portal</div><div class="s">Dile adónde quieres ir y Joule te lleva.</div></div>
+<div id="t1" class="abs ttl"><div class="l">02 · BÚSQUEDA</div><div class="h">Busca códigos de usuario</div><div class="s">Sin recorrer menús: pregunta y obtén el dato.</div></div>
+<div id="t2" class="abs ttl"><div class="l">03 · ORGANIGRAMA</div><div class="h">Consulta tu organigrama</div><div class="s">Tu equipo y tu posición en la compañía, al instante.</div></div>
+
+<div id="vC" class="abs card portal">
+  <div class="pbar"><b>Inicio ▾</b><span>Buscar acciones…</span></div>
+  <div id="tiles"></div>
+  <div id="navpill" class="pill" style="left:30px;top:508px;background:#5b3df5;color:#fff;font-size:24px;padding:14px 28px">→ Abriendo «Solicitar tiempo libre»…</div>
+  <div id="ripple" class="abs" style="width:60px;height:60px;border-radius:50%;border:5px solid #fff"></div>
+  <svg id="cursor" class="abs" width="48" height="48" viewBox="0 0 34 44"><path d="M3 2 L3 34 L11 27 L17 40 L23 37 L17 25 L28 25 Z" fill="#fff" stroke="#1d1a45" stroke-width="2.5" stroke-linejoin="round"/></svg>
+</div>
+
+<div id="vD" class="abs card">
+  <div id="sbar" class="search"><svg class="abs" style="left:32px;top:24px" width="40" height="40" viewBox="0 0 40 40" fill="none" stroke="#5b3df5" stroke-width="4.5" stroke-linecap="round"><circle cx="17" cy="17" r="11"/><path d="M26 26l10 10"/></svg><span id="stxt"></span></div>
+  <div id="res" class="res">
+    <div class="abs" style="left:44px;top:44px;width:128px;height:128px;border-radius:50%;background:linear-gradient(135deg,#4a2af0,#c21ec0);color:#fff;font-size:52px;font-weight:700;text-align:center;line-height:128px">LG</div>
+    <div class="abs" style="left:204px;top:52px;font-size:52px;font-weight:700;color:#1d1a45">Laura Gómez</div>
+    <div class="abs" style="left:204px;top:122px;font-size:30px;color:#6b6890">Departamento de Compras</div>
+    <div class="abs" style="left:44px;top:204px;width:792px;height:2px;background:#ebe8f7"></div>
+    <div class="abs" style="left:44px;top:236px;font-size:24px;letter-spacing:4px;font-weight:700;color:#8a86ad">CÓDIGO DE USUARIO</div>
+    <div id="code" class="abs" style="left:40px;top:272px;font-size:136px;font-weight:700;color:#5b2eff;letter-spacing:6px;line-height:1.1;font-variant-numeric:tabular-nums"></div>
+    <div id="copy" class="pill" style="right:44px;top:316px;background:#5b3df5;color:#fff;font-size:28px;padding:18px 40px">Copiar código</div>
+  </div>
+</div>
+
+<div id="vE" class="abs card">
+  <svg class="abs" width="880" height="580" viewBox="0 0 880 580" fill="none" stroke="rgba(255,255,255,.85)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+    <path id="e1" pathLength="1" d="M440 96 V148 H140 V200"/><path id="e2" pathLength="1" d="M440 96 V200"/><path id="e3" pathLength="1" d="M440 96 V148 H740 V200"/>
+    <path id="e4" pathLength="1" d="M440 276 V333 H200 V390"/><path id="e5" pathLength="1" d="M440 276 V390"/><path id="e6" pathLength="1" d="M440 276 V333 H680 V390"/>
+  </svg>
+  <div id="n0" class="node" style="left:300px;top:20px;width:280px">Dirección General</div>
+  <div id="n1" class="node" style="left:20px;top:200px;width:240px">Dir. Comercial</div>
+  <div id="n2" class="node" style="left:320px;top:200px;width:240px;background:#efe9ff;border:4px solid #7b4cf0;line-height:68px">Mi responsable</div>
+  <div id="n3" class="node" style="left:620px;top:200px;width:240px">Dir. Tecnología</div>
+  <div id="n4" class="node" style="left:90px;top:390px;width:220px">Equipo</div>
+  <div id="n5" class="node" style="left:330px;top:390px;width:220px;background:linear-gradient(135deg,#6a2cf0,#d41c9d);color:#fff;font-size:30px">Yo</div>
+  <div id="n6" class="node" style="left:570px;top:390px;width:220px">Equipo</div>
+  <div id="epill" class="pill" style="left:0;width:880px;text-align:center;top:520px;color:rgba(255,255,255,.9);font-size:26px;font-weight:400">Resaltada, tu posición en la organización</div>
+</div>
+
+<div id="vF" class="abs" style="width:1920px;height:1080px">
+  <div id="ft" class="abs c w" style="top:170px;font-size:88px;font-weight:700">Y mucho más, con solo preguntar</div>
+  <div id="fs" class="abs c w" style="top:800px;font-size:40px;opacity:.85">Todo desde una simple conversación, dentro de SuccessFactors.</div>
+  <div id="chips"></div>
+</div>
+
+<div id="foot" class="abs c" style="top:1010px;font-size:22px;color:rgba(255,255,255,.65);letter-spacing:3px">HEFAME  ·  SAP SUCCESSFACTORS  ·  JOULE</div>
+
+<div id="bgY2" class="abs"></div>
+<div id="fin" class="abs">
+  <div id="flogo" class="abs"></div>
+  <div id="fplus" class="abs w" style="left:1050px;top:296px;width:120px;text-align:center;font-size:90px;color:#1c1a1a;font-weight:700;line-height:1">+</div>
+  <div id="fj" class="abs" style="left:1270px;top:226px;width:200px;height:200px;border-radius:48px;background:linear-gradient(135deg,#4a2af0,#b01fc9);box-shadow:0 24px 50px rgba(60,20,160,.4)"></div>
+  <div id="fh" class="abs c" style="top:520px;font-size:84px;font-weight:700;color:#1c1a1a">Joule, ya en SuccessFactors</div>
+  <div id="fsub" class="abs c" style="top:640px;font-size:46px;color:#3a3414">Pregúntale lo que necesites.</div>
+  <div id="fcta" class="pill" style="left:660px;top:760px;width:600px;text-align:center;background:#1c1a1a;color:#F6D50C;font-size:40px;padding:24px 0">Pruébalo hoy en tu portal</div>
+</div>
+</div>
+
+<script>
+const $=id=>document.getElementById(id);
+const clamp=(x,a=0,b=1)=>Math.min(b,Math.max(a,x));
+const P=(t,a,d)=>clamp((t-a)/d);
+const eo=x=>1-Math.pow(1-x,3);
+const eio=x=>x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2;
+const eob=x=>{const c=1.70158;return 1+(c+1)*Math.pow(x-1,3)+c*Math.pow(x-1,2)};
+const win=(t,a,b,fi=.45,fo=.4)=>Math.min(P(t,a,fi),1-P(t,b-fo,fo));
+function S(el,o,x=0,y=0,s=1){el.style.opacity=o;el.style.transform=`translate(${x}px,${y}px) scale(${s})`}
+
+let uid=0;
+function jouleIcon(fg='#fff',cut=true){
+  const id='m'+(uid++);
+  return `<svg viewBox="0 0 200 200" width="100%" height="100%"><defs><mask id="${id}"><rect width="200" height="200" fill="#fff"/><use href="#spk" transform="translate(100 114) scale(24)" fill="#000"/></mask></defs>
+  <path d="M52 66 H148 L180 98 L100 184 L20 98 Z" fill="${fg}" stroke="${fg}" stroke-width="14" stroke-linejoin="round" mask="url(#${id})"/>
+  <use class="s1" href="#spk" fill="${fg}" transform="translate(70 28) scale(22)"/>
+  <use class="s2" href="#spk" fill="${fg}" transform="translate(26 58) scale(12)"/>
+  <use class="s3" href="#spk" fill="${fg}" transform="translate(172 48) scale(15)"/></svg>`;
+}
+function twinkle(root,t){
+  const base=[[70,28,22],[26,58,12],[172,48,15]];
+  ['s1','s2','s3'].forEach((c,i)=>{const e=root.querySelector('.'+c);const k=.82+.28*Math.sin(t*3.2+i*2.1);
+    e.setAttribute('transform',`translate(${base[i][0]} ${base[i][1]}) scale(${base[i][2]*k}) rotate(${Math.sin(t*2+i)*8})`)});
+}
+function hefameLogo(dark='#1c1a1a',w=760){
+  return `<svg viewBox="0 0 800 200" width="${w}" height="${w/4}"><defs><clipPath id="hc${uid}"><circle cx="100" cy="100" r="100"/></clipPath></defs>
+  <g id="hcirc${uid}"><circle cx="100" cy="100" r="100" fill="#fff"/><g transform="translate(100 100) skewX(-14) translate(-100 -100)" fill="#F6D50C"><rect x="58" y="42" width="30" height="116"/><rect x="112" y="42" width="30" height="116"/><rect x="58" y="86" width="84" height="28"/></g></g>
+  <text id="htxt${uid++}" x="238" y="152" font-size="160" font-weight="700" font-style="italic" fill="${dark}" stroke="${dark}" stroke-width="5" textLength="560" lengthAdjust="spacingAndGlyphs">HEFAME</text></svg>`;
+}
+
+// ---------- build static DOM ----------
+$('hlogo').style.cssText='left:580px;top:440px;width:760px;height:190px';$('hlogo').innerHTML=hefameLogo();
+$('heroIcon').innerHTML=jouleIcon();$('chIcon').innerHTML=jouleIcon();
+$('fj').innerHTML=`<div style="width:130px;height:130px;margin:35px">${jouleIcon()}</div>`;
+$('flogo').style.cssText='left:340px;top:226px;width:600px;height:150px';$('flogo').innerHTML=hefameLogo('#1c1a1a',560);
+$('flogo').style.top='250px';$('flogo').style.left='450px';
+
+const IC={
+ book:'<path d="M10 8h22a6 6 0 0 1 6 6v26H16a6 6 0 0 1-6-6z"/><path d="M16 40a6 6 0 0 1-6-6M18 18h14M18 25h14"/>',
+ team:'<rect x="17" y="6" width="14" height="10" rx="2"/><rect x="4" y="32" width="14" height="10" rx="2"/><rect x="30" y="32" width="14" height="10" rx="2"/><path d="M24 16v8M11 32v-8h26v8"/>',
+ edit:'<path d="M8 40l4-12L32 8l8 8-20 20z"/><path d="M28 12l8 8"/>',
+ clock:'<circle cx="24" cy="24" r="17"/><path d="M24 12v12l8 5"/>',
+ cal:'<rect x="7" y="10" width="34" height="31" rx="5"/><path d="M7 20h34M16 5v9M32 5v9M16 29h6"/>',
+ chat:'<path d="M8 10h32a3 3 0 0 1 3 3v18a3 3 0 0 1-3 3H22l-9 8v-8H8a3 3 0 0 1-3-3V13a3 3 0 0 1 3-3z"/>',
+ org:'<rect x="17" y="6" width="14" height="10" rx="2"/><rect x="4" y="32" width="14" height="10" rx="2"/><rect x="30" y="32" width="14" height="10" rx="2"/><path d="M24 16v8M11 32v-8h26v8"/>',
+ target:'<circle cx="24" cy="24" r="18"/><circle cx="24" cy="24" r="10"/><circle cx="24" cy="24" r="2.5"/>'
+};
+const ico=n=>`<svg viewBox="0 0 48 48">${IC[n]}</svg>`;
+const TILES=[['Mi aprendizaje','book','#0b57d0'],['Mi equipo','team','#e0147a'],['Mis datos','edit','#0c9a8b'],['Fichar','clock','#7b5cf5'],
+ ['Solicitar tiempo libre','cal','#5b6d84'],['Dar feedback','chat','#1b64e0'],['Organigrama','org','#e0147a'],['Mis objetivos','target','#0c9a8b']];
+const tiles=[];
+TILES.forEach((d,i)=>{const e=document.createElement('div');e.className='tile';e.style.background=d[2];
+ e.style.left=(30+(i%4)*210)+'px';e.style.top=(94+Math.floor(i/4)*210)+'px';e.innerHTML=ico(d[1])+d[0];$('tiles').appendChild(e);tiles.push(e)});
+
+const CH=[['Actualizar mis datos','edit','#0c9a8b'],['Solicitar tiempo libre','cal','#5b6d84'],['Dar feedback','chat','#1b64e0'],
+ ['Consultar mi puesto','org','#e0147a'],['Mis objetivos','target','#7b5cf5'],['Mi formación','book','#0b57d0']];
+const chips=[];
+CH.forEach((d,i)=>{const e=document.createElement('div');e.className='chip';e.style.left=(150+(i%3)*550)+'px';e.style.top=(390+Math.floor(i/3)*170)+'px';
+ e.innerHTML=`<div class="b" style="background:${d[2]}">${ico(d[1])}</div><div class="t">${d[0]}</div>`;$('chips').appendChild(e);chips.push(e)});
+
+// chat scenes
+const SC=[
+ {s:7,u:'Llévame a solicitar tiempo libre',r:'¡Claro! Te llevo a la acción «Solicitar tiempo libre».'},
+ {s:12,u:'¿Cuál es el código de usuario de Laura Gómez?',r:'Laura Gómez, Compras. Su código de usuario es 104582.'},
+ {s:17,u:'Muéstrame mi organigrama',r:'Aquí tienes tu organigrama. Te he resaltado tu posición.'}];
+SC.forEach(c=>{const g=document.createElement('div');g.className='grp';
+ g.innerHTML=`<div class="ub"></div><div class="dots"><i></i><i></i><i></i></div><div class="rb"></div>`;$('grps').appendChild(g);
+ c.g=g;c.ub=g.children[0];c.dt=g.children[1];c.rb=g.children[2];
+ c.ub.innerHTML=`<span style="opacity:0">${c.u}</span>`;c.rb.innerHTML=`<span style="opacity:0">${c.r}</span>`;});
+const split=(txt,n)=>{n=Math.max(0,Math.min(txt.length,Math.floor(n)));return txt.slice(0,n)+`<span style="opacity:0">${txt.slice(n)}</span>`};
+
+// ---------- timeline ----------
+function seek(t){
+  // backgrounds
+  $('bgP').style.clipPath=`circle(${2300*eio(P(t,2.3,1.1))}px at 960px 540px)`;
+  $('bgY2').style.clipPath=`circle(${2300*eio(P(t,25.7,1.0))}px at 960px 540px)`;
+  [['b1',300,100,.13,.17],['b2',900,500,.09,.12],['b3',1300,-50,.15,.1]].forEach(([id,x,y,fx,fy],i)=>{
+    $(id).style.transform=`translate(${x+Math.sin(t*fx*6+i)*160}px,${y+Math.cos(t*fy*6+i*2)*120}px)`});
+
+  // intro
+  const ia=1-P(t,2.2,.7);
+  S($('intro'),ia,0,0,1+.08*P(t,2.2,.9));
+  const hc=document.querySelector('#hlogo [id^=hcirc]'),ht=document.querySelector('#hlogo [id^=htxt]');
+  hc.style.transformOrigin='100px 100px';hc.style.transform=`scale(${.2+.8*eob(P(t,.2,.8))})`;hc.style.opacity=P(t,.2,.3);
+  ht.style.opacity=P(t,.7,.5);ht.setAttribute('transform',`translate(${-60*(1-eo(P(t,.7,.8)))} 0)`);
+  $('hlogo').style.clipPath='none';
+
+  // hero
+  const ha=win(t,3.1,7.0,.5,.5);
+  $('hero').style.opacity=ha;
+  S($('heroIcon'),clamp(P(t,3.2,.5)),0,Math.sin(t*2)*8-30*P(t,6.4,.6),.5+.5*eob(P(t,3.2,.9)));
+  twinkle($('heroIcon'),t);
+  S($('glow'),.9,0,0,1+.08*Math.sin(t*2.5));
+  S($('h1'),P(t,3.9,.5),0,30*(1-eo(P(t,3.9,.6))));
+  S($('h2'),P(t,4.2,.5),0,40*(1-eo(P(t,4.2,.7))),1);
+  S($('h3'),P(t,4.7,.6)*.92,0,30*(1-eo(P(t,4.7,.7))));
+
+  // chat panel
+  const cin=eob(P(t,6.5,.9)),cout=eio(P(t,21.9,.8));
+  const co=t<6.5||t>22.7?0:1;
+  S($('chat'),co,-900*(1-cin)-1000*cout,Math.sin(t*1.5)*4);
+  twinkle($('chIcon'),t);
+  let inp='<span class="ph">¿En qué puedo ayudarte?</span>';
+  SC.forEach((c,i)=>{
+    const r=t-c.s;
+    const uShown=clamp((r-.6)*24,0,c.u.length), sent=r>=2.3;
+    const go=Math.min(P(t,c.s-.05,.3),1-P(t,c.s+4.8,.25));
+    c.g.style.opacity=go;
+    if(r>=.5&&r<2.3){inp=c.u.slice(0,Math.floor(uShown))+(Math.floor(t*3)%2?'<span style="color:#5b3df5">|</span>':'')}
+    S(c.ub,sent?clamp(P(t,c.s+2.3,.25)):0,0,18*(1-eo(P(t,c.s+2.3,.3))));
+    c.ub.innerHTML=c.u;
+    const dOn=r>2.7&&r<3.3;
+    c.dt.style.display=dOn?'flex':'none';
+    [...c.dt.children].forEach((d,k)=>d.style.transform=`translateY(${Math.sin(t*10+k*1.2)*-5}px)`);
+    const n=(r-3.3)*40;
+    c.rb.innerHTML=split(c.r,n);c.rb.style.opacity=r>=3.3?1:0;
+  });
+  $('inp').innerHTML=inp;
+
+  // titles
+  const T=[7,12,17];
+  T.forEach((s,i)=>{const w=win(t,s,s+5,.5,.4);S($('t'+i),w,60*(1-eo(P(t,s+.05,.6)))*-1+(P(t,s+4.6,.4)*-40),0)});
+
+  // C portal
+  let r=t-7;
+  const cw=win(t,7,12,.6,.4);
+  S($('vC'),cw,0,40*(1-eo(P(t,7.2,.7)))+0);
+  const tx=125,ty=94+210+95;
+  const cp=eio(P(r,2.5,1.1));
+  const cx=800+(tx+20-800)*cp,cy=520+(ty+25-520)*cp;
+  const clk=P(r,3.65,.25);
+  S($('cursor'),P(r,2.3,.3)*(1-P(r,4.6,.3)),cx,cy+ (clk>0&&clk<1?4:0));
+  $('cursor').style.left='0';$('cursor').style.top='0';
+  tiles.forEach((e,i)=>{
+    if(i===4){const press=r>3.65&&r<3.85?.94:1;const big=1+.08*eo(P(r,3.85,.5));
+      e.style.transform=`scale(${press*big})`;e.style.boxShadow=`0 0 0 ${8*Math.sin(P(r,3.0,1)*Math.PI)+(r>3.85?8:0)}px rgba(255,255,255,.9),0 20px 50px rgba(0,0,0,.35)`;e.style.opacity=1;e.style.zIndex=2}
+    else{e.style.transform='scale(1)';e.style.boxShadow='none';e.style.opacity=1-.62*eo(P(r,3.85,.5))}
+  });
+  const rp=P(r,3.7,.7);
+  $('ripple').style.left=(125-30)+'px';$('ripple').style.top=(399-30+0)+'px';
+  S($('ripple'),r>3.7?(1-rp)*.9:0,0,0,1+3*rp);
+  S($('navpill'),clamp(P(r,4.0,.4)),0,12*(1-eo(P(r,4.0,.5))));
+
+  // D search
+  r=t-12;
+  const dw=win(t,12,17,.6,.4);
+  S($('vD'),dw,0,40*(1-eo(P(t,12.2,.7))));
+  const stxt='Laura Gómez';
+  $('stxt').textContent=stxt.slice(0,Math.floor(clamp((r-2.4)*16,0,11)));
+  if(r<2.4)$('stxt').innerHTML='<span style="color:#a29fbf">Buscar personas…</span>';
+  S($('res'),clamp(P(r,3.3,.4)),0,60*(1-eo(P(r,3.3,.6))),.94+.06*eob(P(r,3.3,.7)));
+  const fin='104582';let code='';
+  for(let i=0;i<6;i++){const ok=r>3.7+i*.2;code+=ok?fin[i]:Math.floor(((t*47+i*13.7)%10))}
+  $('code').textContent=code;
+  S($('copy'),clamp(P(r,4.5,.3)),0,0,1+.05*Math.sin(t*8)*clamp(P(r,4.5,.3)));
+
+  // E org
+  r=t-17;
+  const ew=win(t,17,22,.6,.4);
+  S($('vE'),ew,0,40*(1-eo(P(t,17.2,.7))));
+  const pp=(a,d)=>eo(P(r,a,d));
+  const node=(id,a)=>{const p=eob(P(r,a,.6));S($(id),clamp(P(r,a,.3)),0,0,.6+.4*p)};
+  node('n0',2.5);
+  ['e1','e2','e3'].forEach(id=>$(id).style.strokeDasharray=`${pp(2.9,.6)} 1.01`);
+  node('n1',3.2);node('n2',3.2);node('n3',3.2);
+  ['e4','e5','e6'].forEach(id=>$(id).style.strokeDasharray=`${pp(3.7,.6)} 1.01`);
+  node('n4',4.2);node('n6',4.2);
+  $('n5').style.opacity=clamp(P(r,4.2,.3));$('n5').style.transform=`scale(${(.6+.4*eob(P(r,4.2,.6)))*(r>4.8?1+.05*Math.sin((r-4.8)*8):1)})`;
+  $('n5').style.boxShadow=r>4.6?`0 0 0 ${6+6*Math.sin(t*6)}px rgba(255,255,255,.35),0 12px 30px rgba(10,0,60,.3)`:'';
+  S($('epill'),clamp(P(r,4.5,.4)));
+  ['e1','e2','e3','e4','e5','e6'].forEach(id=>$(id).style.strokeDashoffset=0);
+
+  // F
+  const fw=win(t,22.1,26,.5,.6);
+  $('vF').style.opacity=fw;
+  S($('ft'),1,0,30*(1-eo(P(t,22.2,.7))));
+  chips.forEach((e,i)=>{const a=22.7+i*.18;const p=eob(P(t,a,.6));
+    e.style.opacity=clamp(P(t,a,.3));e.style.transform=`translateY(${(1-p)*60+Math.sin(t*2+i)*5}px) scale(${.85+.15*p})`});
+  S($('fs'),clamp(P(t,24.2,.6))*.85,0,20*(1-eo(P(t,24.2,.7))));
+  $('foot').style.opacity=Math.min(P(t,7.2,.5),1-P(t,22,.4))*1;
+
+  // final
+  const fo=t>=25.7?1:0;
+  $('fin').style.opacity=fo;
+  const fl=document.querySelector('#flogo [id^=hcirc]'),ft=document.querySelector('#flogo [id^=htxt]');
+  S($('flogo'),clamp(P(t,26.2,.4)),0,0,.9+.1*eo(P(t,26.2,.8)));
+  S($('fplus'),clamp(P(t,26.6,.4)));
+  S($('fj'),clamp(P(t,26.7,.3)),0,0,.4+.6*eob(P(t,26.7,.8)));
+  twinkle($('fj'),t);
+  S($('fh'),clamp(P(t,27.3,.5)),0,40*(1-eo(P(t,27.3,.7))));
+  S($('fsub'),clamp(P(t,27.9,.5)),0,30*(1-eo(P(t,27.9,.7))));
+  S($('fcta'),clamp(P(t,28.5,.5)),0,30*(1-eo(P(t,28.5,.7))),1+.02*Math.sin(t*5)*P(t,29,.3));
+}
+window.seek=seek;seek(0);
+</script></body></html>
