@@ -2,10 +2,10 @@
 <html lang="es"><head><meta charset="utf-8"><title>Hefame × Joule</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-html,body{width:1920px;height:1080px;overflow:hidden;background:#F6D50C;font-family:"Liberation Sans",Arial,Helvetica,sans-serif}
+html,body{width:1920px;height:1080px;overflow:hidden;background:#fff;font-family:"Liberation Sans",Arial,Helvetica,sans-serif}
 #stage{position:relative;width:1920px;height:1080px;overflow:hidden}
 .abs{position:absolute;left:0;top:0}
-#bgY{width:1920px;height:1080px;background:#F6D50C}
+#bgY{width:1920px;height:1080px;background:#fff}
 #bgP{width:1920px;height:1080px;background:linear-gradient(135deg,#fcfaff 0%,#efe6ff 48%,#f9f1ff 100%);overflow:hidden}
 #gl{position:absolute;left:0;top:0;width:1920px;height:1080px;pointer-events:none;z-index:50}
 .dc{position:absolute;border-radius:26px;background:rgba(255,255,255,.55);border:2px solid rgba(255,255,255,.9);box-shadow:0 24px 60px rgba(120,80,220,.18)}
@@ -160,8 +160,8 @@ function hefameLogo(dark='#1c1a1a',w=760){
 }
 
 // ---------- build static DOM ----------
-$('hlogo').style.cssText='left:580px;top:440px;width:760px;height:190px';$('hlogo').innerHTML=hefameLogo();
-$('flogo').style.cssText='left:810px;top:34px;width:300px;height:75px';$('flogo').innerHTML=hefameLogo('#1c1a1a',300);
+$('hlogo').style.cssText='left:610px;top:444px;width:700px;height:192px';$('hlogo').innerHTML='<img src="hefame-logo.png" style="width:100%;display:block">';
+$('flogo').style.cssText='left:805px;top:30px;width:310px;height:85px';$('flogo').innerHTML='<img src="hefame-logo.png" style="width:100%;display:block">';
 
 const IC={
  book:'<path d="M10 8h22a6 6 0 0 1 6 6v26H16a6 6 0 0 1-6-6z"/><path d="M16 40a6 6 0 0 1-6-6M18 18h14M18 25h14"/>',
@@ -306,10 +306,7 @@ function seek(t){
   // intro
   const ia=1-P(t,2.2,.7);
   S($('intro'),ia,0,0,1+.08*P(t,2.2,.9));
-  const hc=document.querySelector('#hlogo [id^=hcirc]'),ht=document.querySelector('#hlogo [id^=htxt]');
-  hc.style.transformOrigin='100px 100px';hc.style.transform=`scale(${.2+.8*eob(P(t,.2,.8))})`;hc.style.opacity=P(t,.2,.3);
-  ht.style.opacity=P(t,.7,.5);ht.setAttribute('transform',`translate(${-60*(1-eo(P(t,.7,.8)))} 0)`);
-  $('hlogo').style.clipPath='none';
+  S($('hlogo'),clamp(P(t,.2,.7)),0,12*(1-eo(P(t,.2,.9))),.92+.08*eo(P(t,.2,1.0)));
 
   // hero
   const ha=win(t,3.1,7.0,.5,.5);
