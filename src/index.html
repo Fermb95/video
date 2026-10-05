@@ -36,15 +36,15 @@ html,body{width:1920px;height:1080px;overflow:hidden;background:#fff;font-family
 .pbar{position:absolute;left:0;top:0;width:880px;height:64px;background:#fff;border-bottom:2px solid #e6e8f0}
 .pbar b{position:absolute;left:30px;top:18px;font-size:26px;color:#0a3d91}
 .pbar span{position:absolute;left:300px;top:14px;width:380px;height:36px;border-radius:18px;background:#eef0f6;color:#8a90a6;font-size:20px;line-height:36px;padding-left:18px}
-.tile{position:absolute;width:190px;height:190px;border-radius:24px;color:#1c1a1a;font-weight:700;font-size:24px;text-align:center;padding:0 10px}
-.tile svg{display:block;margin:34px auto 14px;width:58px;height:58px;fill:none;stroke:#1c1a1a;stroke-width:3.4;stroke-linecap:round;stroke-linejoin:round}
+.tile{position:absolute;width:190px;height:190px;border-radius:24px;color:#3d3d3d;font-weight:700;font-size:24px;text-align:center;padding:0 10px}
+.tile svg{display:block;margin:34px auto 14px;width:58px;height:58px;fill:none;stroke:#3d3d3d;stroke-width:3.4;stroke-linecap:round;stroke-linejoin:round}
 .pill{position:absolute;border-radius:40px;font-weight:700;white-space:nowrap}
 .search{position:absolute;left:0;top:0;width:880px;height:88px;border-radius:44px;background:#fff;box-shadow:0 14px 40px rgba(90,50,200,.3);font-size:36px;color:#241b52;line-height:88px;padding-left:96px}
 .res{position:absolute;left:0;top:124px;width:880px;height:456px;border-radius:38px;background:#fff;box-shadow:0 30px 70px rgba(90,50,200,.4)}
 .node{position:absolute;height:76px;border-radius:20px;background:rgba(255,255,255,.95);color:#2a1a6e;font-size:27px;font-weight:700;text-align:center;line-height:76px;box-shadow:0 12px 30px rgba(90,50,200,.3)}
 .chip{position:absolute;width:520px;height:140px;border-radius:32px;background:rgba(255,255,255,.96);box-shadow:0 20px 50px rgba(90,50,200,.35)}
 .chip .b{position:absolute;left:28px;top:28px;width:84px;height:84px;border-radius:24px}
-.chip .b svg{width:48px;height:48px;margin:18px;fill:none;stroke:#1c1a1a;stroke-width:3.4;stroke-linecap:round;stroke-linejoin:round}
+.chip .b svg{width:48px;height:48px;margin:18px;fill:none;stroke:#3d3d3d;stroke-width:3.4;stroke-linecap:round;stroke-linejoin:round}
 .chip .t{position:absolute;left:134px;top:0;height:140px;line-height:140px;font-size:34px;font-weight:700;color:#241b52}
 </style></head><body><div id="stage">
 <svg width="0" height="0" style="position:absolute"><defs><path id="spk" d="M0 -1 C .12 -.35 .35 -.12 1 0 C .35 .12 .12 .35 0 1 C -.12 .35 -.35 .12 -1 0 C -.35 -.12 -.12 -.35 0 -1Z"/></defs></svg>
@@ -61,7 +61,7 @@ html,body{width:1920px;height:1080px;overflow:hidden;background:#fff;font-family
 <div id="hero" class="abs">
   <div id="h1" class="abs c" style="top:590px"><span style="display:inline-block;background:#F6D50C;color:#1c1a1a;font-size:28px;font-weight:700;letter-spacing:7px;padding:10px 28px;border-radius:30px">NOVEDAD EN HEFAME</span></div>
   <div id="h2" class="abs c" style="top:650px;font-size:160px;font-weight:700;letter-spacing:-3px;line-height:1.1;background:linear-gradient(90deg,#4a2af0,#a21cc8);-webkit-background-clip:text;background-clip:text;color:transparent;left:560px;width:800px">Joule</div>
-  <div id="h3" class="abs c" style="top:850px;font-size:44px;color:#4b3d8f">El asistente de IA de SAP, ya en nuestro SuccessFactors</div>
+  <div id="h3" class="abs c" style="top:850px;font-size:44px;color:#4b3d8f">El asistente de IA de SAP para nuestro PortalEmplead@</div>
 </div>
 
 <div id="chat" class="abs">
@@ -71,7 +71,7 @@ html,body{width:1920px;height:1080px;overflow:hidden;background:#fff;font-family
 </div>
 
 <div id="t0" class="abs ttl"><div class="l">01 · NAVEGACIÓN</div><div class="h">Te guía por el portal</div><div class="s">Dile adónde quieres ir y Joule te lleva.</div></div>
-<div id="t1" class="abs ttl"><div class="l">02 · BÚSQUEDA</div><div class="h">Busca códigos de usuario</div><div class="s">Sin recorrer menús: pregunta y obtén el dato.</div></div>
+<div id="t1" class="abs ttl"><div class="l">02 · ACCESO</div><div class="h">Joule, siempre a mano</div><div class="s">Búscalo en la barra superior de PortalEmplead@.</div></div>
 <div id="t2" class="abs ttl"><div class="l">03 · ORGANIGRAMA</div><div class="h">Consulta tu organigrama</div><div class="s">Tu equipo y tu posición en la compañía, al instante.</div></div>
 
 <div id="vC" class="abs card portal">
@@ -82,16 +82,23 @@ html,body{width:1920px;height:1080px;overflow:hidden;background:#fff;font-family
   <svg id="cursor" class="abs" width="48" height="48" viewBox="0 0 34 44"><path d="M3 2 L3 34 L11 27 L17 40 L23 37 L17 25 L28 25 Z" fill="#fff" stroke="#1d1a45" stroke-width="2.5" stroke-linejoin="round"/></svg>
 </div>
 
-<div id="vD" class="abs card">
-  <div id="sbar" class="search"><svg class="abs" style="left:32px;top:24px" width="40" height="40" viewBox="0 0 40 40" fill="none" stroke="#5b3df5" stroke-width="4.5" stroke-linecap="round"><circle cx="17" cy="17" r="11"/><path d="M26 26l10 10"/></svg><span id="stxt"></span></div>
-  <div id="res" class="res">
-    <div class="abs" style="left:44px;top:44px;width:128px;height:128px;border-radius:50%;background:linear-gradient(135deg,#4a2af0,#c21ec0);color:#fff;font-size:52px;font-weight:700;text-align:center;line-height:128px">LG</div>
-    <div class="abs" style="left:204px;top:52px;font-size:52px;font-weight:700;color:#1d1a45">Laura Gómez</div>
-    <div class="abs" style="left:204px;top:122px;font-size:30px;color:#6b6890">Departamento de Compras</div>
-    <div class="abs" style="left:44px;top:204px;width:792px;height:2px;background:#ebe8f7"></div>
-    <div class="abs" style="left:44px;top:236px;font-size:24px;letter-spacing:4px;font-weight:700;color:#8a86ad">CÓDIGO DE USUARIO</div>
-    <div id="code" class="abs" style="left:40px;top:272px;font-size:108px;font-weight:700;color:#5b2eff;letter-spacing:4px;line-height:1.1;font-variant-numeric:tabular-nums"></div>
-    <div id="copy" class="pill" style="right:44px;top:316px;background:#5b3df5;color:#fff;font-size:28px;padding:18px 40px">Copiar código</div>
+<div id="vD" class="abs card portal" style="background:#fff">
+  <div id="pz" class="abs" style="width:880px;height:580px">
+    <div class="abs" style="left:0;top:0;width:880px;height:64px;background:#FFCC00;box-shadow:0 3px 8px rgba(0,0,0,.25);z-index:2"></div>
+    <img class="abs" src="hefame-logo-header.png" style="left:20px;top:12px;height:40px;z-index:3">
+    <div class="abs" style="left:262px;top:19px;font-size:21px;font-weight:700;color:#4a4a4a;z-index:3">Inicio ⌄</div>
+    <div class="abs" style="left:350px;top:13px;width:224px;height:38px;border:2px solid #6b5600;border-radius:20px;font-style:italic;color:#555;font-size:15px;line-height:34px;padding-left:12px;z-index:3">Buscar acciones o personas</div>
+    <svg class="abs" style="z-index:3;left:596px;top:18px" width="28" height="28" viewBox="0 0 28 28" fill="none" stroke="#4a4a4a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="7.5"/><path d="M18 18l6 6"/></svg>
+    <div id="dia" class="abs" style="left:644px;top:18px;width:28px;height:28px;z-index:4"><svg width="28" height="28" viewBox="0 0 28 28" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"><path id="diaP" d="M8 5h12l5 6-11 12L3 11z" fill="none" stroke="#4a4a4a"/><path d="M14 10l1.2 2.8 2.8 1.2-2.8 1.2L14 18l-1.2-2.8-2.8-1.2 2.8-1.2z" fill="#4a4a4a" stroke="none"/></svg></div>
+    <svg class="abs" style="z-index:3;left:692px;top:18px" width="28" height="28" viewBox="0 0 28 28" fill="none" stroke="#4a4a4a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="14" cy="14" r="10"/><path d="M9 14l4 4 7-8"/></svg>
+    <svg class="abs" style="z-index:3;left:740px;top:18px" width="28" height="28" viewBox="0 0 28 28" fill="none" stroke="#4a4a4a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h20v12H12l-6 5v-5H4z"/></svg>
+    <svg class="abs" style="z-index:3;left:788px;top:18px" width="28" height="28" viewBox="0 0 28 28" fill="none" stroke="#4a4a4a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 20h16l-2-3v-5a6 6 0 0 0-12 0v5zM12 23h4"/></svg>
+    <div class="abs" style="left:830px;top:15px;width:34px;height:34px;border-radius:50%;background:#8a8a8a;border:3px solid #ddd;z-index:3"></div>
+    <div class="abs" style="left:30px;top:100px;font-size:30px;font-weight:700;color:#222">Acciones rápidas</div>
+    <div class="abs" style="left:30px;top:190px;width:124px;height:108px;border-radius:16px;background:#FFCC00;box-shadow:0 6px 14px rgba(0,0,0,.18);color:#555;font-size:15px;text-align:center;padding-top:62px">Ver Mi perfil</div><div class="abs" style="left:170px;top:190px;width:124px;height:108px;border-radius:16px;background:#FFCC00;box-shadow:0 6px 14px rgba(0,0,0,.18);color:#555;font-size:15px;text-align:center;padding-top:62px">Ver Organigrama</div><div class="abs" style="left:310px;top:190px;width:124px;height:108px;border-radius:16px;background:#FFCC00;box-shadow:0 6px 14px rgba(0,0,0,.18);color:#555;font-size:15px;text-align:center;padding-top:62px">Ver Mi aprendizaje</div><div class="abs" style="left:450px;top:190px;width:124px;height:108px;border-radius:16px;background:#FFCC00;box-shadow:0 6px 14px rgba(0,0,0,.18);color:#555;font-size:15px;text-align:center;padding-top:62px">Ver Favoritos</div><div class="abs" style="left:590px;top:190px;width:124px;height:108px;border-radius:16px;background:#FFCC00;box-shadow:0 6px 14px rgba(0,0,0,.18);color:#555;font-size:15px;text-align:center;padding-top:62px">Visitas</div><div class="abs" style="left:730px;top:190px;width:124px;height:108px;border-radius:16px;background:#FFCC00;box-shadow:0 6px 14px rgba(0,0,0,.18);color:#555;font-size:15px;text-align:center;padding-top:62px">Recordatorios</div><div class="abs" style="left:30px;top:320px;width:124px;height:108px;border-radius:16px;background:#FFCC00;box-shadow:0 6px 14px rgba(0,0,0,.18);color:#555;font-size:15px;text-align:center;padding-top:62px">Ver informes</div><div class="abs" style="left:170px;top:320px;width:124px;height:108px;border-radius:16px;background:#FFCC00;box-shadow:0 6px 14px rgba(0,0,0,.18);color:#555;font-size:15px;text-align:center;padding-top:62px">Flujos pendientes</div><div class="abs" style="left:310px;top:320px;width:124px;height:108px;border-radius:16px;background:#FFCC00;box-shadow:0 6px 14px rgba(0,0,0,.18);color:#555;font-size:15px;text-align:center;padding-top:62px">Ver Centro de informes</div><div class="abs" style="left:450px;top:320px;width:124px;height:108px;border-radius:16px;background:#FFCC00;box-shadow:0 6px 14px rgba(0,0,0,.18);color:#555;font-size:15px;text-align:center;padding-top:62px">Delegar flujos</div><div class="abs" style="left:590px;top:320px;width:124px;height:108px;border-radius:16px;background:#FFCC00;box-shadow:0 6px 14px rgba(0,0,0,.18);color:#555;font-size:15px;text-align:center;padding-top:62px">Alertas</div><div class="abs" style="left:730px;top:320px;width:124px;height:108px;border-radius:16px;background:#FFCC00;box-shadow:0 6px 14px rgba(0,0,0,.18);color:#555;font-size:15px;text-align:center;padding-top:62px">Más acciones</div>
+    <div id="dring" class="abs" style="left:640px;top:14px;width:36px;height:36px;border-radius:50%;border:3px solid #7b3ff0;z-index:5"></div>
+    <div id="dtip" class="abs" style="left:560px;top:78px;width:200px;text-align:center;background:#2b1a73;color:#fff;font-size:15px;font-weight:700;border-radius:10px;padding:6px 0;z-index:6">Joule · tu asistente</div>
+    <svg id="cur2" class="abs" width="24" height="24" viewBox="0 0 34 44" style="z-index:9"><path d="M3 2 L3 34 L11 27 L17 40 L23 37 L17 25 L28 25 Z" fill="#fff" stroke="#1d1a45" stroke-width="3" stroke-linejoin="round"/></svg>
   </div>
 </div>
 
@@ -112,18 +119,18 @@ html,body{width:1920px;height:1080px;overflow:hidden;background:#fff;font-family
 
 <div id="vF" class="abs" style="width:1920px;height:1080px">
   <div id="ft" class="abs c" style="color:#2b1a73;top:170px;font-size:88px;font-weight:700">Y mucho más, con solo preguntar</div>
-  <div id="fs" class="abs c" style="color:#5b4d96;top:800px;font-size:40px;opacity:.85">Todo desde una simple conversación, dentro de SuccessFactors.</div>
+  <div id="fs" class="abs c" style="color:#5b4d96;top:800px;font-size:40px;opacity:.85">Todo desde una simple conversación, dentro de PortalEmplead@.</div>
   <div id="chips"></div>
 </div>
 
 <svg id="thr" class="abs" width="1920" height="1080" style="pointer-events:none;filter:drop-shadow(0 0 10px rgba(140,80,255,.7))"><defs><linearGradient id="tg" x1="0" x2="1"><stop offset="0" stop-color="#7b3ff0"/><stop offset="1" stop-color="#F6D50C"/></linearGradient></defs><path id="thrP" pathLength="1" fill="none" stroke="url(#tg)" stroke-width="6" stroke-linecap="round" d="M0 0"/><circle id="thrD" r="11" fill="#fff" stroke="#7b3ff0" stroke-width="4"/></svg>
-<div id="foot" class="abs c" style="top:1036px;font-size:22px;color:rgba(91,77,150,.7);letter-spacing:3px">HEFAME  ·  SAP SUCCESSFACTORS  ·  JOULE</div>
+<div id="foot" class="abs c" style="top:1036px;font-size:22px;color:rgba(91,77,150,.7);letter-spacing:3px">HEFAME  ·  PORTALEMPLEAD@  ·  JOULE</div>
 
 <canvas id="gl" width="1920" height="1080"></canvas>
 <div id="fin" class="abs">
   <div id="flogo" class="abs"></div>
   <div id="fh" class="abs c" style="top:600px;font-size:88px;line-height:1.08;font-weight:700;color:#2b1a73">Joule, tu nuevo compañero<br>en el departamento</div>
-  <div id="fsub" class="abs c" style="top:810px;font-size:44px;color:#5b4d96">Disponible próximamente en SuccessFactors.</div>
+  <div id="fsub" class="abs c" style="top:810px;font-size:44px;color:#5b4d96">Disponible próximamente en PortalEmplead@.</div>
   <div id="fcta" class="pill" style="left:660px;top:915px;width:600px;text-align:center;background:#2b1a73;color:#F6D50C;font-size:38px;padding:20px 0">Muy pronto en tu portal</div>
 </div>
 </div>
@@ -175,14 +182,14 @@ const IC={
  target:'<circle cx="24" cy="24" r="18"/><circle cx="24" cy="24" r="10"/><circle cx="24" cy="24" r="2.5"/>'
 };
 const ico=n=>`<svg viewBox="0 0 48 48">${IC[n]}</svg>`;
-const TILES=[['Mi aprendizaje','book','#F6D50C'],['Mi equipo','team','#F6D50C'],['Mis datos','edit','#F6D50C'],['Fichar','clock','#F6D50C'],
- ['Prevención','shield','#F6D50C'],['Dar feedback','chat','#F6D50C'],['Organigrama','org','#F6D50C'],['Mis objetivos','target','#F6D50C']];
+const TILES=[['Mi aprendizaje','book','#FFCC00'],['Mi equipo','team','#FFCC00'],['Mis datos','edit','#FFCC00'],['Fichar','clock','#FFCC00'],
+ ['Prevención','shield','#FFCC00'],['Dar feedback','chat','#FFCC00'],['Organigrama','org','#FFCC00'],['Mis objetivos','target','#FFCC00']];
 const tiles=[];
 TILES.forEach((d,i)=>{const e=document.createElement('div');e.className='tile';e.style.background=d[2];
  e.style.left=(30+(i%4)*210)+'px';e.style.top=(94+Math.floor(i/4)*210)+'px';e.innerHTML=ico(d[1])+d[0];$('tiles').appendChild(e);tiles.push(e)});
 
-const CH=[['Actualizar mis datos','edit','#F6D50C'],['Prevención','shield','#F6D50C'],['Dar feedback','chat','#F6D50C'],
- ['Consultar mi puesto','org','#F6D50C'],['Mis objetivos','target','#F6D50C'],['Mi formación','book','#F6D50C']];
+const CH=[['Actualizar mis datos','edit','#FFCC00'],['Prevención','shield','#FFCC00'],['Dar feedback','chat','#FFCC00'],
+ ['Consultar mi puesto','org','#FFCC00'],['Mis objetivos','target','#FFCC00'],['Mi formación','book','#FFCC00']];
 const chips=[];
 CH.forEach((d,i)=>{const e=document.createElement('div');e.className='chip';e.style.left=(150+(i%3)*550)+'px';e.style.top=(390+Math.floor(i/3)*170)+'px';
  e.innerHTML=`<div class="b" style="background:${d[2]}">${ico(d[1])}</div><div class="t">${d[0]}</div>`;$('chips').appendChild(e);chips.push(e)});
@@ -190,7 +197,7 @@ CH.forEach((d,i)=>{const e=document.createElement('div');e.className='chip';e.st
 // chat scenes
 const SC=[
  {s:7,u:'¿Me puedes decir dónde encontrar el acceso a mi formación?',r:'¡Claro! Está en «Mi aprendizaje». Te llevo allí.'},
- {s:12,u:'¿Cuál es el código de usuario de Laura Gómez?',r:'Laura Gómez, Compras. Su código de usuario es 90987654.'},
+ {s:12,u:'¿Dónde te encuentro en PortalEmplead@?',r:'Estoy en la barra superior, en el icono del diamante.'},
  {s:17,u:'Muéstrame mi organigrama',r:'Aquí tienes tu organigrama. Te he resaltado tu posición.'}];
 SC.forEach(c=>{const g=document.createElement('div');g.className='grp';
  g.innerHTML=`<div class="ub"></div><div class="dots"><i></i><i></i><i></i></div><div class="rb"></div>`;$('grps').appendChild(g);
@@ -199,7 +206,7 @@ SC.forEach(c=>{const g=document.createElement('div');g.className='grp';
 const split=(txt,n)=>{n=Math.max(0,Math.min(txt.length,Math.floor(n)));return txt.slice(0,n)+`<span style="opacity:0">${txt.slice(n)}</span>`};
 
 // ---------- decor (parallax glass cards + particles) ----------
-const DC=[[1560,110,260,170,.6,-4,'#F6D50C'],[1000,860,300,180,.9,3,'#a98bf7'],[1730,740,240,150,.7,5,'#8a4bff'],[860,60,190,120,.4,-6,'#a98bf7'],[1480,880,200,130,1,-3,'#F6D50C'],[900,420,170,110,.3,4,'#8a4bff'],[40,40,160,100,.5,-5,'#F6D50C'],[1790,380,200,130,.8,6,'#a98bf7']];
+const DC=[[1560,110,260,170,.6,-4,'#FFCC00'],[1000,860,300,180,.9,3,'#a98bf7'],[1730,740,240,150,.7,5,'#8a4bff'],[860,60,190,120,.4,-6,'#a98bf7'],[1480,880,200,130,1,-3,'#FFCC00'],[900,420,170,110,.3,4,'#8a4bff'],[40,40,160,100,.5,-5,'#FFCC00'],[1790,380,200,130,.8,6,'#a98bf7']];
 const dcs=DC.map(d=>{const e=document.createElement('div');e.className='dc';e.style.width=d[2]+'px';e.style.height=d[3]+'px';
   e.innerHTML=`<i style="left:18px;top:18px;width:34px;height:34px;background:${d[6]}"></i><i style="left:64px;top:22px;width:${d[2]-100}px;height:10px;background:#e4d9ff"></i><i style="left:64px;top:42px;width:${(d[2]-100)*.6}px;height:10px;background:#efe8ff"></i><i style="left:18px;top:74px;width:${d[2]-36}px;height:${d[3]-100}px;background:linear-gradient(135deg,#f3ecff,#fff)"></i>`;
   e.style.filter=`blur(${(1-d[4])*5}px)`;$('bgP').appendChild(e);return e});
@@ -210,7 +217,7 @@ function updateDecor(t){
   pts.forEach(([e,x,v,i])=>{const y=((1200-(t*v+i*90))%1200+1200)%1200-60;e.style.transform=`translate(${x+Math.sin(t*.5+i)*30}px,${y}px)`;e.style.opacity=.35+.4*Math.abs(Math.sin(t+i))});
 }
 // ---------- light thread from chat to content ----------
-const THR=[[1055,569],[1090,640],[1370,410]];
+const THR=[[1055,569],[1550,441],[1370,410]]
 function updateThread(t){
   const p=$('thrP'),d=$('thrD');
   let k=-1;[7,12,17].forEach((s,i)=>{if(t>=s&&t<s+5.3)k=i});
@@ -360,18 +367,23 @@ function seek(t){
   S($('ripple'),r>3.7?(1-rp)*.9:0,0,0,1+3*rp);
   S($('navpill'),clamp(P(r,4.0,.4)),0,12*(1-eo(P(r,4.0,.5))));
 
-  // D search
+  // D: Joule icon in the portal header
   r=t-12;
   const dw=win(t,12,17,.6,.4);
   S($('vD'),dw,0,40*(1-eo(P(t,12.2,.7))));
-  const stxt='Laura Gómez';
-  $('stxt').textContent=stxt.slice(0,Math.floor(clamp((r-2.4)*16,0,11)));
-  if(r<2.4)$('stxt').innerHTML='<span style="color:#a29fbf">Buscar personas…</span>';
-  S($('res'),clamp(P(r,3.3,.4)),0,60*(1-eo(P(r,3.3,.6))),.94+.06*eob(P(r,3.3,.7)));
-  const fin='90987654';let code='';
-  for(let i=0;i<8;i++){const ok=r>3.7+i*.15;code+=ok?fin[i]:Math.floor(((t*47+i*13.7)%10))}
-  $('code').textContent=code;
-  S($('copy'),clamp(P(r,4.5,.3)),0,0,1+.05*Math.sin(t*8)*clamp(P(r,4.5,.3)));
+  const zz=eio(P(r,2.9,1.4));
+  $('pz').style.transformOrigin='700px 0px';$('pz').style.transform=`scale(${1+.9*zz})`;
+  const cp2=eio(P(r,3.0,1.5));
+  S($('cur2'),clamp(P(r,2.7,.3)),780+(656-780)*cp2,300+(28-300)*cp2+(P(r,4.5,.2)>0&&P(r,4.5,.2)<1?3:0));
+  const hl=clamp(P(r,3.9,.4));
+  const pulse=r>3.9&&r<4.5?1+.35*Math.sin((r-3.9)*10):1;
+  S($('dring'),r>3.9?hl*(r<4.6?1:1-P(r,4.6,.5)*.0):0,0,0,pulse);
+  const ck=P(r,4.5,.7);
+  $('dring').style.borderColor=r>4.5?'#7b3ff0':'#7b3ff0';
+  if(r>4.5){S($('dring'),(1-ck)*.9+.1*(1-ck),0,0,1+2.4*ck)}
+  $('diaP').setAttribute('fill',r>4.5?'#6a2cf0':'none');$('diaP').setAttribute('stroke',r>4.5?'#6a2cf0':'#4a4a4a');
+  S($('dia'),1,0,0,r>4.5?1+.25*Math.sin(P(r,4.5,.5)*Math.PI):1);
+  S($('dtip'),clamp(P(r,4.1,.4))*(r>4.5?1:1),0,8*(1-eo(P(r,4.1,.5))));
 
   // E org
   r=t-17;
