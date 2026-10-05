@@ -44,6 +44,14 @@ for b in range(int(D/2.5)+1):
 mus*= np.minimum(t/1.5,1)*np.clip((D-t)/2.0,0,1)
 # final resolving chord
 for m in (60,64,67,72): add(mus,T(26.6),tone(hz(m),3.4,.02,.9,(1,.3,.1)),.12)
+import os
+if os.path.exists('/home/user/video/src/music.mp3'):
+    r=subprocess.run(['ffmpeg','-v','error','-i','/home/user/video/src/music.mp3','-ac','1','-ar',str(SR),'-f','f32le','-'],capture_output=True,check=True)
+    m=np.frombuffer(r.stdout,dtype=np.float32).astype(np.float64); m/=np.abs(m).max()
+    xf=int(3*SR); full=m.copy()
+    while len(full)<N:
+        fade=np.linspace(0,1,xf); full=np.concatenate([full[:-xf],full[-xf:]*(1-fade)+m[:xf]*fade,m[xf:]])
+    mus=full[:N].copy()*np.minimum(t/1.5,1)*np.clip((D-t)/3.0,0,1)*.62
 def whoosh(dur,up=True,g=.5):
     x=np.arange(int(dur*SR))/SR; n=rng.standard_normal(len(x))
     k=np.cumsum(n); # brownian-ish
