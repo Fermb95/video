@@ -51,7 +51,7 @@ if os.path.exists('/home/user/video/src/music.mp3'):
     xf=int(3*SR); full=m.copy()
     while len(full)<N:
         fade=np.linspace(0,1,xf); full=np.concatenate([full[:-xf],full[-xf:]*(1-fade)+m[:xf]*fade,m[xf:]])
-    mus=full[:N].copy()*np.minimum(t/1.5,1)*np.clip((D-t)/3.0,0,1)*.62
+    mus=full[:N].copy()*np.minimum(t/1.5,1)*np.clip((D-t)/3.0,0,1)*.55
 def whoosh(dur,up=True,g=.5):
     x=np.arange(int(dur*SR))/SR; n=rng.standard_normal(len(x))
     k=np.cumsum(n); # brownian-ish
@@ -87,7 +87,7 @@ for f,st in (('presentacion',starts[1]+1.0),('codigos',starts[2]+.2),('guia',sta
         x=load(V+f+'.mp3'); print(f,round(st,2),'->',round(st+len(x)/SR,2)); add(vo,st,x,1.0)
 env=np.convolve(np.abs(vo),np.ones(int(.15*SR))/int(.15*SR),'same')
 env=np.convolve(np.minimum(env*8,1),np.ones(int(.4*SR))/int(.4*SR),'same')
-duck=1-.6*np.minimum(env,1)
+duck=1-.84*np.minimum(env,1)
 out=mus*.55*duck+sfx*.6*(1-.3*np.minimum(env,1))+vo*1.0
 out=np.tanh(out*1.05); out/=np.abs(out).max()/.9
 st=np.stack([out,np.roll(out,int(.004*SR))],1)
