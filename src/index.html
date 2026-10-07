@@ -70,8 +70,8 @@ html,body{width:1920px;height:1080px;overflow:hidden;background:#fff;font-family
   <div id="inp"></div>
 </div>
 
-<div id="t0" class="abs ttl"><div class="l">01 · NAVEGACIÓN</div><div class="h">Te guía por el portal</div><div class="s">Dile adónde quieres ir y Joule te lleva.</div></div>
-<div id="t1" class="abs ttl"><div class="l">02 · ACCESO</div><div class="h">Joule, siempre a mano</div><div class="s">Búscalo en la barra superior de PortalEmplead@.</div></div>
+<div id="t0" class="abs ttl"><div class="l">01 · ACCESO</div><div class="h">Joule, siempre a mano</div><div class="s">Búscalo en la barra superior de PortalEmplead@.</div></div>
+<div id="t1" class="abs ttl"><div class="l">02 · NAVEGACIÓN</div><div class="h">Te guía por el portal</div><div class="s">Dile adónde quieres ir y Joule te lleva.</div></div>
 <div id="t2" class="abs ttl"><div class="l">03 · ORGANIGRAMA</div><div class="h">Consulta tu organigrama</div><div class="s">Tu equipo y tu posición en la compañía, al instante.</div></div>
 
 <div id="vC" class="abs card portal">
@@ -196,8 +196,8 @@ CH.forEach((d,i)=>{const e=document.createElement('div');e.className='chip';e.st
 
 // chat scenes
 const SC=[
- {s:7,u:'¿Me puedes decir dónde encontrar el acceso a mi formación?',r:'¡Claro! Está en «Mi aprendizaje». Te llevo allí.'},
- {s:12,u:'¿Dónde te encuentro en PortalEmplead@?',r:'Estoy en la barra superior, en el icono del diamante.'},
+  {s:7,u:'¿Dónde te encuentro en PortalEmplead@?',r:'Estoy en la barra superior, en el icono del diamante.'},
+ {s:12,u:'¿Me puedes decir dónde encontrar el acceso a mi formación?',r:'¡Claro! Está en «Mi aprendizaje». Te llevo allí.'},
  {s:17,u:'Muéstrame mi organigrama',r:'Aquí tienes tu organigrama. Te he resaltado tu posición.'}];
 SC.forEach(c=>{const g=document.createElement('div');g.className='grp';
  g.innerHTML=`<div class="ub"></div><div class="dots"><i></i><i></i><i></i></div><div class="rb"></div>`;$('grps').appendChild(g);
@@ -217,7 +217,7 @@ function updateDecor(t){
   pts.forEach(([e,x,v,i])=>{const y=((1200-(t*v+i*90))%1200+1200)%1200-60;e.style.transform=`translate(${x+Math.sin(t*.5+i)*30}px,${y}px)`;e.style.opacity=.35+.4*Math.abs(Math.sin(t+i))});
 }
 // ---------- light thread from chat to content ----------
-const THR=[[1055,569],[1550,441],[1370,410]]
+const THR=[[1550,441],[1055,569],[1370,410]]
 function updateThread(t){
   const p=$('thrP'),d=$('thrD');
   let k=-1;[7,12,17].forEach((s,i)=>{if(t>=s&&t<s+5.3)k=i});
@@ -348,9 +348,9 @@ function seek(t){
   T.forEach((s,i)=>{const w=win(t,s,s+5,.5,.4);S($('t'+i),w,60*(1-eo(P(t,s+.05,.6)))*-1+(P(t,s+4.6,.4)*-40),0)});
 
   // C portal
-  let r=t-7;
-  const cw=win(t,7,12,.6,.4);
-  S($('vC'),cw,0,40*(1-eo(P(t,7.2,.7)))+0);
+  let r=t-12;
+  const cw=win(t,12,17,.6,.4);
+  S($('vC'),cw,0,40*(1-eo(P(t,12.2,.7)))+0);
   const tx=125,ty=94+95;
   const cp=eio(P(r,2.5,1.1));
   const cx=800+(tx+20-800)*cp,cy=520+(ty+25-520)*cp;
@@ -368,9 +368,9 @@ function seek(t){
   S($('navpill'),clamp(P(r,4.0,.4)),0,12*(1-eo(P(r,4.0,.5))));
 
   // D: Joule icon in the portal header
-  r=t-12;
-  const dw=win(t,12,17,.6,.4);
-  S($('vD'),dw,0,40*(1-eo(P(t,12.2,.7))));
+  r=t-7;
+  const dw=win(t,7,12,.6,.4);
+  S($('vD'),dw,0,40*(1-eo(P(t,7.2,.7))));
   const zz=eio(P(r,2.9,1.4));
   $('pz').style.transformOrigin='700px 0px';$('pz').style.transform=`scale(${1+.9*zz})`;
   const cp2=eio(P(r,3.0,1.5));

@@ -70,8 +70,8 @@ add(sfx,T(3.2),tone(hz(84),1.6,.01,2.5,(1,.4,.3)),.18); add(sfx,T(3.35),tone(hz(
 for s,L in ((7,59),(12,45),(17,24)):
     add(sfx,T(s+2.3),pop(),.5)
     add(sfx,T(s+3.3),ding(),.22)
-add(sfx,T(10.65),click(),1.2); add(sfx,T(10.65),pop(500),.3)
-add(sfx,T(12+4.5),click(),1.2); add(sfx,T(12+4.5),pop(500),.3)
+add(sfx,T(12+3.65),click(),1.2); add(sfx,T(12+3.65),pop(500),.3)
+add(sfx,T(7+4.5),click(),1.2); add(sfx,T(7+4.5),pop(500),.3)
 for i in range(6): add(sfx,T(22.7+i*.18),tone(hz(72+[0,4,7,12,7,4][i]),.6,.003,6,(1,.3)),.1)
 add(sfx,T(26.7),tone(hz(96),1.5,.005,2.5,(1,.4,.3)),.15)
 add(sfx,T(28.5),pop(900),.3)
@@ -82,7 +82,7 @@ def load(f):
     return x/np.abs(x).max()*.9
 V='/home/user/video/src/voice/'
 vo=np.zeros(N)
-for f,st in (('presentacion',starts[1]+1.0),('guia',starts[2]+.5),('codigos',starts[3]+.2),('organigrama',starts[4]+.5),('mucho_mas',starts[5]+.6),('cierre',starts[6]+2.6)):
+for f,st in (('presentacion',starts[1]+1.0),('codigos',starts[2]+.2),('guia',starts[3]+.5),('organigrama',starts[4]+.5),('mucho_mas',starts[5]+.6),('cierre',starts[6]+2.6)):
     if os.path.exists(V+f+'.mp3'):
         x=load(V+f+'.mp3'); print(f,round(st,2),'->',round(st+len(x)/SR,2)); add(vo,st,x,1.0)
 env=np.convolve(np.abs(vo),np.ones(int(.15*SR))/int(.15*SR),'same')
