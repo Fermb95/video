@@ -82,7 +82,7 @@ def load(f):
     return x/np.abs(x).max()*.9
 V='/home/user/video/src/voice/'
 vo=np.zeros(N)
-for f,st in (('presentacion',starts[1]+1.0),('guia',starts[2]+.5),('codigos',starts[3]+.5),('organigrama',starts[4]+.5),('mucho_mas',starts[5]+.6),('cierre',starts[6]+2.6)):
+for f,st in (('presentacion',starts[1]+1.0),('guia',starts[2]+.5),('codigos',starts[3]+.2),('organigrama',starts[4]+.5),('mucho_mas',starts[5]+.6),('cierre',starts[6]+2.6)):
     if os.path.exists(V+f+'.mp3'):
         x=load(V+f+'.mp3'); print(f,round(st,2),'->',round(st+len(x)/SR,2)); add(vo,st,x,1.0)
 env=np.convolve(np.abs(vo),np.ones(int(.15*SR))/int(.15*SR),'same')
